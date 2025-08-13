@@ -1,103 +1,49 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <section>
+      <h1>Welcome!</h1>
+      <p>
+        In 1985, Gary Gygax and Flint Dille published "Sagard the Barbarian #1 -
+        The Ice Dragon". In 1993, my family moved into a rented house in
+        Timonium, MD, and I found a copy of "Sagard the Barbarian #2 - the Green
+        Hydra" in the basement. I loved it.
+      </p>
+      <p>
+        "Sagard the Barbarian" is a series of solo RPG books in the "choose your
+        own adventure" style. You read along, make choices, fight battles, win
+        trophies, and try to stay alive. Sometimes this is not the easiest thing
+        to do.
+      </p>
+      <p>
+        When I learned VueJS, I needed a project to make, to strengthen my
+        skills. I remembered the Sagard books and went looking for them, and lo
+        and behold, I found them on the Home of the Underdogs. I decided to see
+        if I could adapt the first book to the computer age using Vue. Here is
+        my attempt.
+      </p>
+      <p>
+        Note: I claim no ownership over the Sagard content. IANAL, but I assume
+        the copyright still stands since the books are less than 30 years old,
+        even though they're out of print. If there is a copyright dispute, I'll
+        happily take this down and write my own book.
+      </p>
+      <Link className="button" href="/story/introduction">
+        Begin your quest!
+      </Link>
+      <h2>Attributions</h2>
+      <ul>
+        <li>Text: Gary Gygax and Flint Dille</li>
+        <li>
+          Icons: Delapouite, Lorc, sparker, Kier Heyl, Cathelineau. Available on
+          https://game-icons.net
+        </li>
+        <li>
+          Vue assistance: Bobby McDonald, Chris Violette, Dan Ott, and the
+          #clejs folk on the Cleveland Tech Slack instance.
+        </li>
+      </ul>
+    </section>
   );
 }

@@ -1,26 +1,69 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color: #202020;
+  font-family: var(--font-sans);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-serif);
+  font-weight: normal;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: max-content auto;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+}
+
+aside {
+  border-right: 1px solid #c9c9c9;
+  overflow: auto;
+  padding: 1rem;
+}
+
+main {
+  overflow: auto;
+  padding: 0 2rem 4rem;
+}
+
+section {
+  padding-top: 2rem;
+  max-width: 38rem;
+}
+
+.button {
+  background: #39f;
+  border-radius: 12px;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: block;
+  font-family: inherit;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 300ms ease-out;
+  width: 100%;
+}
+
+.button:hover,
+.button:active {
+  background: #17f;
+}
+
+.button + .button {
+  margin-top: 1rem;
 }
