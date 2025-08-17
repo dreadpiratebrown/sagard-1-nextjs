@@ -44,6 +44,10 @@ section {
   max-width: 38rem;
 }
 
+section.battle-section {
+  max-width: 43rem;
+}
+
 .button {
   background: #39f;
   border-radius: 12px;
@@ -66,4 +70,34 @@ section {
 
 .button + .button {
   margin-top: 1rem;
+}
+
+.attack {
+  background-color: #880808;
+  border-radius: 6px;
+  margin-top: 4px;
+  padding: 0.5rem;
+}
+
+.attack:hover,
+.attack:active {
+  background-color: #660606;
+}
+
+.flee {
+  background-color: #eeee00;
+  color: #000;
+  padding: 0.75rem 1.5rem;
+  width: auto;
+}
+
+.flee:hover,
+.flee:active {
+  background-color: #999900;
+}
+
+.attack[disabled],
+.flee[disabled] {
+  background-color: #c9c9c9;
+  cursor: not-allowed;
 }
