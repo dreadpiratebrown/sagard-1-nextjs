@@ -174,8 +174,7 @@ shirt** greatly increases your speed.`,
     updates: {
       gear: [
         {
-          name: "Mail shirt",
-          remove: true,
+          name: "-Mail shirt",
         },
       ],
     },
@@ -1072,8 +1071,7 @@ Your steely thews carry you swiftly toward the mountains.`,
       xp: 4,
       gear: [
         {
-          name: "Mail shirt",
-          remove: true,
+          name: "-Mail shirt",
         },
       ],
     },
@@ -1105,8 +1103,7 @@ For two days, you recover from the fight. Regain **12 HP** and gain **1 XP**.`,
       xp: 1,
       gear: [
         {
-          name: "Mail shirt",
-          remove: true,
+          name: "-Mail shirt",
         },
       ],
     },

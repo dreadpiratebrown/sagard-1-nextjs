@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@dice-roller/rpg-dice-roller": "^5.5.1",
     "next": "15.4.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-markdown": "^10.1.0",
+    "react-uuid": "^2.0.0",
     "zustand": "^5.0.7"
   },
   "devDependencies": {

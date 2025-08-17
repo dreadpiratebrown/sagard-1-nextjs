@@ -1,0 +1,71 @@
+.battleUi {
+  display: flex;
+}
+
+.goodGuys {
+  border-right: 1px solid #c9c9c9;
+  display: flex;
+  margin-right: 1rem;
+  padding-right: 1rem;
+}
+
+.foes,
+.allies {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.allies {
+  margin: 0 0 0 4px;
+  max-width: 400px;
+}
+
+.foes li,
+.allies li {
+  margin: 0 4px 8px 0;
+  width: 120px;
+}
+
+.battleLog {
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.battleLog ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+@keyframes battle-log-flash {
+  0% {
+    color: #202020;
+    font-weight: normal;
+  }
+  1% {
+    color: red; /* instant change */
+    font-weight: normal;
+  }
+  20% {
+    font-weight: bold; /* smooth ramp to bold */
+  }
+  80% {
+    font-weight: bold; /* hold bold */
+  }
+  99% {
+    color: red; /* still red until near end */
+    font-weight: normal; /* smooth fade back */
+  }
+  100% {
+    color: #202020; /* instant revert to black */
+    font-weight: normal;
+  }
+}
+
+.battleLog li {
+  animation: battle-log-flash 2s ease-out forwards;
+}
