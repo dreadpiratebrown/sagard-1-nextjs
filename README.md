@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# sagard
 
-## Getting Started
+In 1985, Gary Gygax and Flint Dille published "Sagard the Barbarian #1 - The Ice Dragon". In 1993, my family moved into a rented house in Timonium, MD, and I found a copy of "Sagard the Barbarian #2 - the Green Hydra" in the basement. I loved it.
 
-First, run the development server:
+"Sagard the Barbarian" is a series of solo RPG books in the "choose your own adventure" style. You read along, make choices, fight battles, win trophies, and try to stay alive. Sometimes this is not the easiest thing to do.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+When I was first learning VueJS, I needed a project to make, to strengthen my skills. I remembered the Sagard books and went looking for them, and lo and behold, I found them on the [Home of the Underdogs](http://www.homeoftheunderdogs.net/). I decided to see if I could adapt the first book to the computer age using Vue. That attempt was mostly successful. This particular implementation is in NextJS, as I wanted to try my hand at a different framework. It is more successful, I think.
+
+Note: I claim no ownership over the Sagard content. IANAL, but I assume the copyright still stands since the books are less than 30 years old, even though they're out of print. If there is a copyright dispute, I'll happily take this down and write my own book.
+
+## Install
+
+```
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Run
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Roadmap
 
-## Learn More
+V 0.1 - complete
 
-To learn more about Next.js, take a look at the following resources:
+To Do:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Save current section in local storage so users can come back to it later. Alternatively: add auth functionality?
+- Prevent page refresh from resetting battles.
+- Write a more robust event engine so there aren't so many singleton listeners. The goal is to have a text game engine that can use any story and battle data, rather than a discrete application per book. Note: this may not be possible. Since the writers could put literally any conditions in the book, it would be up to the reader to follow the instructions. I'll know better once I start on Book 2.
+- Better icons for battles.
+- Better battle UI.
+- Annotations. The writing is, how do you say? Ah yes. Not so good. I want to add my own comments & criticisms in an unobtrusive way.
+- Responsive styles so it works on phones and other small devices.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Contribute
 
-## Deploy on Vercel
+Open an issue or submit a PR.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT © Joshua Brown 2025
