@@ -1204,8 +1204,7 @@ He hands you a spear and laughs at you again. Now that you have seen him, you ma
     updates: {
       gear: [
         {
-          name: "Sword",
-          remove: true,
+          name: "-Sword",
         },
       ],
     },
@@ -1237,6 +1236,7 @@ As the sun glows red on the horizon, you continue on your journey.`,
         {
           name: "Frusti Sage's map",
           points: 3,
+          add: true,
         },
       ],
     },
@@ -2072,28 +2072,22 @@ Later, you make your way back to where you stashed your other trophies. You pick
     updates: {
       trophies: [
         {
-          name: "Stuffed bat",
-          remove: true,
+          name: "-Stuffed bat",
         },
         {
-          name: "Snow Tiger's teeth",
-          remove: true,
+          name: "-Snow Tiger's teeth",
         },
         {
-          name: "Yeti pelt",
-          remove: true,
+          name: "-Yeti pelt",
         },
         {
-          name: "River Monster's spine",
-          remove: true,
+          name: "-River Monster's spine",
         },
         {
-          name: "Zokaper's key",
-          remove: true,
+          name: "-Zokaper's key",
         },
         {
-          name: "Glowmoss",
-          remove: true,
+          name: "-Glowmoss",
         },
         {
           name: "Mountain Lion's pelt",

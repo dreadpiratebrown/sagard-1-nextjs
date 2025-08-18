@@ -6,6 +6,25 @@ import { useGameStore } from "@/lib/store";
 const Sidebar = () => {
   const store = useGameStore();
 
+  const heal = (trophy) => {
+    if (trophy === "Glowmoss") {
+      store.updateStore({
+        hp: 20,
+        trophies: [{ name: "-Glowmoss " }],
+      });
+    } else {
+      store.updateStore({
+        hp: 20,
+        trophies: [
+          {
+            name: "Furred Snake's fang",
+            usable: false,
+          },
+        ],
+      });
+    }
+  };
+
   return (
     <div className={styles.characterSheet}>
       <p className={styles.stat}>Level: {store.level}</p>
@@ -28,13 +47,17 @@ const Sidebar = () => {
           <strong>Trophies</strong>
         </p>
         <ul>
-          {store.trophies.map((trophy) => (
-            <li key={trophy.name}>{trophy.name}</li>
-          ))}
+          {store.trophies
+            .filter((trophy) => !trophy.stash)
+            .map((trophy) => (
+              <li key={trophy.name}>
+                {trophy.name}{" "}
+                {trophy.usable && (
+                  <button onClick={() => heal(trophy.name)}>USE</button>
+                )}
+              </li>
+            ))}
         </ul>
-        {/* <ul>
-            <li v-for="trophy in trophies" :key="trophy">{{ trophy.name }} <a href="#" class="useItem" v-if="trophy.usable" @click="heal(trophy.name, $event)">Use</a></li>
-        </ul> */}
       </div>
     </div>
   );
