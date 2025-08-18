@@ -17,3 +17,11 @@
   margin: 0;
   padding: 0;
 }
+
+.list button {
+  background: #39f;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  padding: 0.5rem;
+}

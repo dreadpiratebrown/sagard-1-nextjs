@@ -15,81 +15,81 @@ import Ally from "./ally";
 
 const BattleUi = ({ id }) => {
   const router = useRouter();
-  const store = useGameStore();
+  const resetLog = useGameStore((state) => state.resetLog);
+  const updateLog = useGameStore((state) => state.updateLog);
+  const setBattle = useGameStore((state) => state.setBattle);
+  const disableFlee = useGameStore((state) => state.disableFlee);
+  const disableSpecial = useGameStore((state) => state.disableSpecial);
+  const level = useGameStore((state) => state.level);
+  const hp = useGameStore((state) => state.hp);
+  const battleLog = useGameStore((state) => state.battleLog);
 
   useEffect(() => {
-    store.resetLog();
+    resetLog();
   }, []);
-
-  const setBattle = useGameStore((state) => state.setBattle);
 
   useEffect(() => {
     setBattle(battles.find((battle) => battle.id === id));
   }, [id, setBattle]);
 
-  const { fleeDisabled, showEvent, specialDisabled, outcome } = useGameStore(
-    (state) => state.currentBattle || {}
-  );
-
-  const disableFlee = useGameStore((state) => state.disableFlee);
-  const disableSpecial = useGameStore((state) => state.disableSpecial);
+  const currentBattle = useGameStore((state) => state.currentBattle);
 
   const flee = () => {
     const roll = new DiceRoll("1d4");
     if (roll.total % 2 === 0) {
-      router.push(store.currentBattle.flee);
+      router.push(currentBattle.flee);
     } else {
-      store.updateLog("You failed to flee.");
+      updateLog("You failed to flee.");
     }
     disableFlee();
   };
 
   const rollSpecial = () => {
     const roll = new DiceRoll("1d4");
-    if (store.currentBattle.special.rollNeeded.includes(roll.total)) {
-      router.push(store.currentBattle.special.target);
+    if (currentBattle.special.rollNeeded.includes(roll.total)) {
+      router.push(currentBattle.special.target);
     } else {
-      store.updateLog(store.currentBattle.special.failText);
+      updateLog(currentBattle.special.failText);
+      disableSpecial();
+      if (!currentBattle.special.attackAfterRoll) {
+        enemiesAttack();
+      }
     }
-    if (!store.currentBattle.special.attackAfterRoll) {
-      enemiesAttack();
-    }
-    disableSpecial();
   };
 
   return (
-    store.currentBattle && (
+    currentBattle && (
       <section className="battle-section">
-        <h1>{store.currentBattle.title}</h1>
-        <ReactMarkdown>{store.currentBattle.text}</ReactMarkdown>
+        <h1>{currentBattle.title}</h1>
+        <ReactMarkdown>{currentBattle.text}</ReactMarkdown>
         <div className={styles.battleUi}>
           <div className={styles.goodGuys}>
             <BattleCard
               name="Sagard"
               icon="barbarian.svg"
-              level={store.level}
-              hp={store.hp}
+              level={level}
+              hp={hp}
               character="sagard"
             />
-            {store.currentBattle.allies && (
+            {currentBattle.allies && (
               <ol className={styles.allies}>
-                {store.currentBattle.allies.map((ally) => (
+                {currentBattle.allies.map((ally) => (
                   <Ally allyName={ally.name} key={ally.name} />
                 ))}
               </ol>
             )}
           </div>
           <ol className={styles.foes}>
-            {store.currentBattle.foes.map((foe) => (
+            {currentBattle.foes.map((foe) => (
               <Foe foeName={foe.name} key={foe.name} />
             ))}
           </ol>
         </div>
 
-        {showEvent && (
+        {currentBattle.showEvent && (
           <div>
-            <p>{store.currentBattle.event.text}</p>
-            {store.currentBattle.event.choices.map((button) => (
+            <p>{currentBattle.event.text}</p>
+            {currentBattle.event.choices.map((button) => (
               <Link key={button.target} className="button" href={button.target}>
                 {button.btnText}
               </Link>
@@ -97,43 +97,43 @@ const BattleUi = ({ id }) => {
           </div>
         )}
 
-        {store.currentBattle.canFlee && !outcome && (
+        {currentBattle.canFlee && !currentBattle.outcome && (
           <button
             className="button flee"
             onClick={flee}
-            disabled={fleeDisabled}
+            disabled={currentBattle.fleeDisabled}
           >
             Flee!
           </button>
         )}
 
-        {store.currentBattle.special && !outcome && (
+        {currentBattle.special && !currentBattle.outcome && (
           <button
             className="button flee"
             onClick={rollSpecial}
-            disabled={specialDisabled}
+            disabled={currentBattle.specialDisabled}
           >
-            {store.currentBattle.special.button}
+            {currentBattle.special.button}
           </button>
         )}
 
-        {outcome && (
+        {currentBattle.outcome && (
           <Link
             className="button"
             href={
-              outcome === "success"
-                ? store.currentBattle.success.target
-                : store.currentBattle.failure.target
+              currentBattle.outcome === "success"
+                ? currentBattle.success.target
+                : currentBattle.failure.target
             }
           >
-            {outcome === "success"
-              ? store.currentBattle.success.text
-              : store.currentBattle.failure.text}
+            {currentBattle.outcome === "success"
+              ? currentBattle.success.text
+              : currentBattle.failure.text}
           </Link>
         )}
         <div className={styles.battleLog}>
           <ul>
-            {[...store.battleLog].reverse().map((item) => (
+            {[...battleLog].reverse().map((item) => (
               <li key={item.id}>{item.text}</li>
             ))}
           </ul>

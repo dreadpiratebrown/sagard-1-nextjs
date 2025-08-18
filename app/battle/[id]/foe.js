@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DiceRoll } from "@dice-roller/rpg-dice-roller";
 import BattleCard from "@/components/battle-card";
 import { useGameStore } from "@/lib/store";
@@ -8,6 +8,8 @@ import { attackFoe, attackSagard } from "@/lib/battleLogic";
 
 const Foe = ({ foeName }) => {
   const [isDefeated, setIsDefeated] = useState(false);
+
+  const hasAttackedRef = useRef(false);
 
   const store = useGameStore();
   const currentBattle = store.currentBattle;
@@ -27,8 +29,9 @@ const Foe = ({ foeName }) => {
   }, [foe.hp]);
 
   useEffect(() => {
-    if (foe?.goFirst) {
+    if (foe?.goFirst && !hasAttackedRef.current) {
       attackSagard(foe);
+      hasAttackedRef.current = true;
     }
   }, [foe.goFirst]);
 
